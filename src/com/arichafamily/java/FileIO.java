@@ -41,13 +41,8 @@ public class FileIO {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        } return null;
+            Close(reader);
+        }
+        return null;
     }
 }
