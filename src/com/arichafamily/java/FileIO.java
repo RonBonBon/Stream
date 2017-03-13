@@ -7,22 +7,12 @@ public class FileIO {
     public static void write(String fileName, String data) {
         FileWriter fileWriter = null;
         try {
-            fileWriter = new FileWriter(fileName);
+            fileWriter = new FileWriter(fileName, true);
             fileWriter.write(data);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             Close(fileWriter);
-        }
-    }
-
-    private static void Close(Closeable fileWriter) {
-        if (fileWriter != null) {
-            try {
-                fileWriter.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 
@@ -45,4 +35,15 @@ public class FileIO {
         }
         return null;
     }
+
+    private static void Close(Closeable closeable) {
+        if (closeable != null) {
+            try {
+                closeable.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
+
