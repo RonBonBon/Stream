@@ -12,12 +12,16 @@ public class FileIO {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (fileWriter != null) {
-                try {
-                    fileWriter.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            Close(fileWriter);
+        }
+    }
+
+    private static void Close(Closeable fileWriter) {
+        if (fileWriter != null) {
+            try {
+                fileWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
